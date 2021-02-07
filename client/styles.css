@@ -1,0 +1,36 @@
+body {
+  background: black;
+  color: white;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+#root{
+  width: 100%;
+}
+
+@media (max-width: 400px)  {
+  .videoList {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (min-width: 401px)  {
+  .videoList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.videoList {
+  display: grid;
+  grid-auto-rows: minmax(200px, 50vh);
+}
+
+
+.vid {
+  height: 100%;
+  width: 100%;
+}
+
