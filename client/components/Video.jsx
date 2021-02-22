@@ -6,27 +6,27 @@ class Video extends Component {
     constructor(props) {
         super(props);
     }
-  
-    onVidReady(event) {
-      event.target.playVideo();
-    }
 
+    onVidReady(event) {
+        event.target.playVideo();
+    }
 
     render() {
         const opts = {
-          playerVars: {
+            playerVars: {
                 controls: 0
-              }
-        }
+            }
+        };
 
         return (
-          <YouTube
-            className="vid"
-            videoId={this.props.id}
-            opts={opts}
-            onReady={this.onVidReady}
-            onEnd={this.props.onVidEnd} 
-          ></YouTube>);
+            <YouTube
+                className="vid"
+                videoId={this.props.id}
+                opts={opts}
+                onReady={this.onVidReady}
+                onEnd={this.props.onVidEnd}
+            ></YouTube>
+        );
     }
 }
 

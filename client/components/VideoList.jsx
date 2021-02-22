@@ -11,7 +11,8 @@ class VideoList extends Component {
 
         this.state = {
             searchTerm: RandomWords(1),
-            vidIDs: []
+            allVidIDs: [],
+            currentVidIDs: []
         };
 
         this.getAllVidIDs = this.getAllVidIDs.bind(this);
@@ -20,6 +21,7 @@ class VideoList extends Component {
 
     componentDidMount() {
         this.getAllVidIDs();
+        // get batch of first vids
     }
 
     async getAllVidIDs() {
@@ -27,8 +29,9 @@ class VideoList extends Component {
         const { vidIDs } = await (
             await fetch(`api/search/${searchTerm}`)
         ).json();
-        console.log('vidIDs',vidIDs);
-        this.setState({ vidIDs });
+
+        this.setState({ currentVidIDs: vidIDs.slice(0,4)});
+        this.setState({ allVidIDs: vidIDs.splice(4, vidIDs.length) });
     }
 
     getSingleVidID() {
@@ -43,21 +46,15 @@ class VideoList extends Component {
     }
 
     render() {
-        const { searchTerm } = this.state;
-        const firstVids = [];
+        const { currentVidIDs, searchTerm } = this.state;
         const opts = {
             playerVars: {
                 controls: 0
             }
         };
 
-        console.log('test 1', this.getSingleVidID());
-        for (let i = 0; i < 4; i++) {
-            firstVids.push(this.getSingleVidID());
-        }
-
-        return firstVids.map(id => (
-            <Video className="vid" id={id} opts={opts} onEnd={this.onVidEnd} />
+        return currentVidIDs.map(id => (
+            <Video className="vid" key={id} id={id} opts={opts} onEnd={this.onVidEnd} />
         ));
     }
 }

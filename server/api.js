@@ -15,7 +15,20 @@ router.get('/search/:term', async function(req, res) {
     const result = await (await fetch(ytSearchURL)).json();
 
     //const vidIDs = result.items.map(({ id }) => id.videoId);
-    const vidIDs = ['BcGQFDTA28o', 'g_dF7SAV3Mg', 'FIlRRMu3bXI', 'SWtdzneHKn8'];
+    const vidIDs = [
+        'BcGQFDTA28o',
+        'g_dF7SAV3Mg',
+        'FIlRRMu3bXI',
+        'SWtdzneHKn8',
+        'uuZE_IRwLNI',
+        'OZLUa8JUR18',
+        'voQ4rfKI4iE',
+        'IcUMGGdd8gw',
+        '9HDEHj2yzew',
+        'vWz9VN40nCA',
+        'ZUau1RT8qbc',
+        'YvVonQ7LUJ0'
+    ];
 
     res.send({ vidIDs });
 });
