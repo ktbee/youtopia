@@ -30,7 +30,9 @@ module.exports = {
     devServer: {
         contentBase: './dist',
         hot: true,
-
+        proxy: {
+          '/api': 'http://localhost:8888/'
+        },
     },
     plugins: [
         new CleanWebpackPlugin(),
