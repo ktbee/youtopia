@@ -16,12 +16,10 @@ class VideoList extends Component {
         };
 
         this.getAllVidIDs = this.getAllVidIDs.bind(this);
-        this.getSingleVidID = this.getSingleVidID.bind(this);
     }
 
     componentDidMount() {
         this.getAllVidIDs();
-        // get batch of first vids
     }
 
     async getAllVidIDs() {
@@ -34,15 +32,9 @@ class VideoList extends Component {
         this.setState({ allVidIDs: vidIDs.splice(4, vidIDs.length) });
     }
 
-    getSingleVidID() {
-        const { vidIDs } = this.state;
-        const singleID = vidIDs.pop();
-
-        this.setState({ vidIDs });
-    }
-
     onVidEnd(event) {
         console.log('video ended', this);
+
     }
 
     render() {
@@ -53,8 +45,8 @@ class VideoList extends Component {
             }
         };
 
-        return currentVidIDs.map(id => (
-            <Video className="vid" key={id} id={id} opts={opts} onEnd={this.onVidEnd} />
+        return currentVidIDs.map((id, index) => (
+            <Video className="vid" key={index} id={id} opts={opts} onEnd={this.onVidEnd} />
         ));
     }
 }

@@ -24,7 +24,7 @@ class Video extends Component {
                 videoId={this.props.id}
                 opts={opts}
                 onReady={this.onVidReady}
-                onEnd={this.props.onVidEnd}
+                onEnd={this.props.onEnd}
             ></YouTube>
         );
     }
